@@ -13,8 +13,6 @@ interface Props {
 
 const HomePage: NextPage<Props> = ({ pokemons }) => {
 
-  console.log(pokemons);
-
   return (
     <Layout title='Listado de Pokémons'>
 
@@ -37,8 +35,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151');
 
-  console.log(data);
-
+ 
   const pokemons: SmallPokemon[] = data.results.map((poke, i) => ({
     ...poke,
     id: i + 1,
